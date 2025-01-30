@@ -34,4 +34,26 @@ mentioned above*/
     }
 )*/
 
-db.test.updateOne({ email: "amccurry3@cnet.com" }, { $pop: { skills: [1] } });
+//use pull or pullAll for array of object to remove element.
+
+/*db.test.updateOne({email:"amccurry3@cnet.com"}, 
+{$pull:{skills:{
+    name:'Python',
+    level:'Beginner',
+    isLearning:true
+}}})*/
+
+// 6. Add a new language "Spanish" to the list of languages spoken by the person.
+
+/*db.test.updateMany({}, 
+
+    {$push: {languages:'Spanish'}})*/
+
+// 7. Remove the skill with the name "Kotlin" from the skills array.
+
+db.test.updateMany(
+  {},
+  {
+    $pull: { skills: { name: "KOTLIN" } },
+  }
+);
