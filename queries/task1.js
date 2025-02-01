@@ -57,3 +57,14 @@ db.test.updateMany(
     $pull: { skills: { name: "KOTLIN" } },
   }
 );
+
+//18.Add an element to the payments of people who are in `France` with the following structure
+db.people.updateMany(
+  { "address.country": "France" },
+  {
+    $addToSet: { payments: { category: "relax", name: "disco", amount: 5.06 } },
+  }
+);
+
+//19.Delete all of everyone's `market` fields.
+//db.people.updateMany({},{$unset: {"wealth.market" : ""}})
